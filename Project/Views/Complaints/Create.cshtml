@@ -1,0 +1,59 @@
+﻿@model Project.Models.Complaint
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Complaint</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ComplaintName" class="control-label">Category</label>
+               <input asp-for="ComplaintName" class="form-control" />
+                <span asp-validation-for="ComplaintName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LocationComplaint" class="control-label">Location</label>
+                <input asp-for="LocationComplaint" class="form-control" />
+                <span asp-validation-for="LocationComplaint" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DescriptionComplaint" class="control-label">Description</label>
+                <input asp-for="DescriptionComplaint" class="form-control" />
+                <span asp-validation-for="DescriptionComplaint" class="text-danger"></span>
+            </div>
+      
+<div class="form-group">  
+      <label asp-for="Path" >Document</label>
+    <input type="file"  name="path"> 
+                        </div>  
+      
+     
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+            </form>
+   
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section scripts{  
+    <script type="text/javascript">  
+        // Add the following code if you want the name of the file appear on select  
+        $(".custom-file-input").on("change", function () {  
+            var fileName = $(this).val().split("\\").pop();  
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);  
+        });  
+    </script>  
+}  

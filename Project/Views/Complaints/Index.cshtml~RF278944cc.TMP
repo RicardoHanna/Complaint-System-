@@ -1,0 +1,68 @@
+﻿
+@model Project.Models.GenderListModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-controller="Complaints" asp-action="Index" method="get">
+<p>
+    Complaint Name: <select asp-for="SearchName" asp-items="Model.ComplaintName">
+        <option value="">All</option>
+    </select>
+
+    lLocation: <input type="text" asp-for="SearchString"/>
+    <input type="submit" value="Filter"/>
+</p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Complaints[0].ComplaintName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Complaints[0].LocationComplaint)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Complaints[0].DescriptionComplaint)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Complaints[0].Path)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Complaints) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComplaintName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocationComplaint)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescriptionComplaint)
+            </td>
+            <td>
+                 <img src="~/images/@item.Path"   
+                        
+                         height="100" width="100"   
+                         asp-append-version="true" />  
+
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

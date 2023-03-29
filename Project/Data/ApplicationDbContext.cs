@@ -1,0 +1,18 @@
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using Project.Models;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Project.Data
+{
+    public class ApplicationDbContext : IdentityDbContext
+    {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
+        {
+        }
+        public DbSet<Complaint> Complaint { get; set; }
+    }
+}
